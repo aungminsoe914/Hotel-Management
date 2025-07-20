@@ -23,6 +23,9 @@ Long description of module's purpose
         'views/main_menu.xml',
         'views/hotel_floor_view.xml',
         'views/hotel_room_view.xml',
+        'views/hotel_amenity_view.xml',
+        'views/hotel_customer_view.xml',
+        'views/customer_kanban_view.xml',
 
         'views/views.xml',
         'views/templates.xml',

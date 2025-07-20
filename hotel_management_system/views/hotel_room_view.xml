@@ -8,8 +8,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="floor_name"/>
-                <field name="access"/>
+                <field name="floor_name1"/>
+                <field name="access" widget="many2many_tags"/>
                 <field name="num_person"/>
             </tree>
         </field>
@@ -24,11 +24,13 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="floor_name"/> 
+                            <field name="floor_name1"/>  
+                            <!-- many2One -->
+                            <!--this is many2one field-->
                             
                         </group>
                         <group>
-                             <field name="access"/>
+                             <field name="access" widget="many2many_tags"/>
                              <field name="num_person"/>
                         </group>
                       

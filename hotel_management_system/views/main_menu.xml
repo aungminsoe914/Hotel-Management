@@ -2,7 +2,9 @@
 <odoo>
     <!--    Main Menu-->
     <menuitem id="hotel_management_menu_root"
+            web_icon="hotel_management_system,static/description/icon.png"
               name="Hotel Management"
+              
               sequence="10"/>
 
   
@@ -10,6 +12,7 @@
     <menuitem id="hotel_config_menu"
               name="Configuration"
               sequence="50"
-              parent="hotel_management_menu_root"/>
+              parent="hotel_management_menu_root"
+              />
    
 </odoo>
