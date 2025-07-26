@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+     <!--Hotel booking Tree View-->
+    <record id="hotel_booking_view_tree" model="ir.ui.view">
+        <field name="name">hotel.booking.view.tree</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name = "name"/>
+                <field name = "customer_name"/>
+                <field name = "date_order"/>
+                
+            </tree>
+        </field>
+    </record>
+    <!--Hotel booking Form View-->
+    <record id="hotel_booking_view_form" model="ir.ui.view">
+        <field name="name">hotel.booking.view.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form string="booking">
+                <sheet>                        
+                    <group>
+                        <group>
+                            <field name = "name"/>
+                            <field name = "customer_name"/>
+                            <field name = "date_order"/>
+                        </group>
+                    </group> 
+                  
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+                
+            </form>
+        </field>
+    </record>
+
+   
+    <!--    booking Menu Action-->
+    <record id="hotel_booking_action" model="ir.actions.act_window">
+        <field name="name">bookings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--bookings Menu-->
+    <menuitem id="hotel_booking_menu"
+              name="Hotel Booking"
+              action="hotel_booking_action"
+              parent="hotel_management_menu_root"
+              sequence="10"/>
+</odoo>

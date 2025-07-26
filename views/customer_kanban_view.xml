@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--Hotel customer kanban View-->
+   
+    <record id = "hotel_customer_view_kanban" model = "ir.ui.view">
+        <field name="name">hotel.customer.view.kanban</field>
+        <field name="model">hotel.customer</field>
+         <field name="arch" type="xml">
+            <kanban class = 'o_kanban_mobile'>
+                <field name = "name"/>
+                <template>
+                    <t t-name = 'kanban-box'>
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class = "o_kanban_image">
+                                <img t-att-src = "kanban_image('hotel.customer','icon',record.id.raw_value)"/>
+                            </div>
+                            <div class ="oe_kanban_details">
+                                <h1>
+                                    <field name = "name"  style="color:#ee0bf2;"/><br/>
+                                </h1>
+                                <!-- <field name="phone"/>
+                                <field name="email"/> -->
+                                  <ul>
+                                    <li  class="o_text_overflow" >
+                                        <i class="fa fa-fw me-2 fa-envelope text-primary" title="Email"/>
+                                        <field name="email"/>
+                                    </li>
+                                    <li  class="o_force_ltr">
+                                        <i class="fa fa-fw me-2 fa-phone " style="color:#ee0bf2;" title="Phone"/>
+                                        <field name="phone"/>
+                                    </li>
+                                      
+                                </ul>
+                                
+                                
+                            </div>
+                        </div>
+                    </t>
+                </template>
+                
+            </kanban>
+        </field>
+    </record>
+</odoo>
