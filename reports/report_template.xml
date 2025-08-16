@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+      
+        
+        <!-- report_template_name form model  hotel.booking 
+         THis is action of pdf report template
+        -->
+
+        <record id="report_template_name" model="ir.actions.report">
+            <field name="name">PDF Report Testing</field>
+            <field name="model">hotel.booking</field>
+            
+            <field name="report_type">qweb-pdf</field>
+
+            <!--   report_hotel_template_001နာမည်နဲ့ template တခုတည်ဆောက်ရမယ်-->
+            <field name="report_name">hotel_management_system.report_hotel_template_001</field>
+            <field name="report_file">hotel_management_system.report_hotel_template_001</field>
+
+            <!-- <field name="paperformat_id" ref="paperformat_specification_report"/> -->
+            <field name="binding_model_id" ref="model_hotel_booking"/>  <!-- bind for model.name
+                room.booking  
+            -->
+            <field name="paperformat_id" ref="paperformat_specification_report"/>
+            <field name="binding_type">report</field>
+
+        </record>
+
+
+    </data>
+</odoo>

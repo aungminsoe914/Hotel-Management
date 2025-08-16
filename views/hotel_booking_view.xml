@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+
+    <record id="hotel_booking_view_search" model="ir.ui.view">
+        <field name="name">hotel.booking.view.search</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+
+            <search string = "Hotel Management Search">
+
+                <field name = "customer_name" string="Customer name"/>
+                <field name = "name" string="Booking No"/>
+                <field name = "amount_total" string="Amount Total" />
+                
+            </search>
+
+
+        </field>
+    </record>
+
+
+     <!--Hotel booking Tree View-->
+    <record id="hotel_booking_view_tree" model="ir.ui.view">
+        <field name="name">hotel.booking.view.tree</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name = "name"/>
+                <field name = "customer_name"/>
+                <field name = "date_order"/>
+                 <field name = "amount_total" string="Amount Total" optional ="hide"/>
+                
+            </tree>
+        </field>
+    </record>
+    <!--Hotel booking Form View-->
+    <record id="hotel_booking_view_form" model="ir.ui.view">
+        <field name="name">hotel.booking.view.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form string="booking">
+                 <header>
+                    <button 
+                        name="action_checkin" 
+                        string="Check In"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status == 'check_in' or status =='invoice'  or status =='check_out'"
+                        
+                        />
+                    <button 
+                        name = "action_invoice"
+                        string = "Create Invoice"
+                        type = 'object'
+                        class="btn-success"
+                        invisible="status == 'draft' or status == 'invoice' or status =='check_out'"
+                    
+                    />
+                    <button 
+                        name = "action_draft"
+                        string = "Reset to draft"
+                        type = 'object'
+                        class="btn-danger"
+                        confirm="Are you sure to draft this booking"
+                        invisible="status == 'draft' or status =='check_out'"
+                    
+                    />
+                    <button 
+                        name = "action_check_out"
+                        string = "Check Out"
+                        type = 'object'
+                        class="btn-success"
+                        invisible="status =='check_out'"
+                        
+                    
+                    />
+                    
+                     
+                    <field name="status" widget="statusbar" 
+                       
+                        />
+                </header>
+                <sheet>      
+                    <div name="button_box" position="inside">
+                        <button name="action_print_pdf" type="object"
+                                class="oe_stat_button" icon="fa-download">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_text">Print PDF</span>
+                            </div>
+                        </button>
+
+
+                        <button name="action_xls_pdf" type="object"
+                                class="oe_stat_button" icon="fa-download">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_text">Print XLS</span>
+                            </div>
+                        </button>
+                    </div>                  
+                    <group>
+                        <group>
+                            <field name = "name"/>
+                            <field name = "customer_name" readonly="status in ['invoice', 'check_out']"/>
+                            <field name = "date_order" readonly="status in ['invoice', 'check_out']"/>
+                        </group>
+                        <group>
+                            <field name ="amount_total" style = "color:red;"/>
+                        </group>
+                    </group> 
+                    <notebook>
+                        <page name ="Booking Lines">
+                             <field name="room_line_ids"  
+                              string="Room Lines">
+
+                                    <tree editable="bottom">
+                                        <field name="room_id" string="Room"/>
+                                        <field name = "amenity"/>
+                                        <field name = "price"/>
+                                    </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+                
+            </form>
+        </field>
+    </record>
+
+   
+    <!--    booking Menu Action-->
+    <record id="hotel_booking_action" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--bookings Menu-->
+    <menuitem id="hotel_booking_menu"
+              name="Hotel Booking"
+              action="hotel_booking_action"
+              parent="hotel_management_menu_root"
+              sequence="10"/>
+</odoo>

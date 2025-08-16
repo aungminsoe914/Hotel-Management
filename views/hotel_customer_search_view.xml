@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+        <record id="customer_search" model="ir.ui.view"> 
+        <field name="name">customer_search</field> 
+        <field name="model">hotel.customer</field> 
+        <!-- model name change -->
+        <!-- <field name="priority" eval="15"/>  -->
+        <field name="arch" type="xml">
+            <search string="Search Hotel Archive Customer">
+
+                <group expand="0" string="Group By">
+
+                        <filter string="Archived" name="inactive" 
+                        domain="[('active' , '=' , False)]"/>
+
+                        <!--  -->
+
+                </group> 
+
+
+            </search>
+        </field> 
+
+</record>
+
+</odoo>

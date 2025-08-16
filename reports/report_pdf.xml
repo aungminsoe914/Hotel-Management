@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Report Template -->
+        <template id="report_hotel_template_001">
+            <t t-call="web.html_container">
+                <!-- html container -->
+                <t t-call="web.basic_layout">
+                    <!-- web.external_layout -->
+                     <!-- web.internal_layout -->
+                      <!-- web.basic_layout -->
+                    <t t-foreach="docs" t-as="doc">
+                        <!--  မဖြစ်မနေပါရမယ် -->
+                    <!-- <t t-foreach="docs" t-as="z">
+                     </t> -->
+                        <!-- docs  -->
+                    <div class="page">
+
+                        <img src="/hotel_management_system/static/src/images/header_pdf.png" 
+                         alt="Report Title" style="max-width:100%;" />
+
+
+                        <h2>Room Booking PDF Test</h2>
+                        Booking Number<t t-esc = "doc.name"/><br/>
+                        Customer Name<t t-esc = "doc.customer_name.name"/><br/>
+                        Order Date<t t-esc = "doc.date_order"/><br/>
+                        Amount Total<t t-esc = "doc.amount_total"/><br/>
+                </div>
+            </t></t>
+        </t>
+    </template>
+    </data>
+</odoo>

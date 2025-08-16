@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+     <!--Hotel customer Tree View-->
+    <record id="hotel_customer_view_tree" model="ir.ui.view">
+        <field name="name">hotel.customer.view.tree</field>
+        <field name="model">hotel.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                
+            </tree>
+        </field>
+    </record>
+    <!--Hotel customer Form View-->
+    <record id="hotel_customer_view_form" model="ir.ui.view">
+        <field name="name">hotel.customer.view.form</field>
+        <field name="model">hotel.customer</field>
+        <field name="arch" type="xml">
+            <form string="customer">
+                <sheet>
+                  <field name="active" widget = "boolean_toggle"  invisible='1' />
+                  <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                   invisible = "active == True"/> 
+
+                   <widget name="web_ribbon" title="Active" bg_color="bg-success"
+                   invisible = "active == False"/> 
+
+                    <field name="icon" widget="image"
+                           class="oe_avatar"
+                           options="{'preview_image': 'icon'}"/>
+                        
+                    <div class="oe_title">
+                        <label for="name" string="Customer Name"/>
+                        <h1>
+                            <field name="name" placeholder="Customer Name"/>
+                        </h1>
+                    </div> 
+                    <notebook>
+                        <page string="Private Info">
+                            <group string="Information">
+                                <group>
+                                    <field name = "nrc"/>
+                                    
+                                </group>
+                                <group>
+                                    <field name = "address"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Contact Info">
+                                <group string="Contact Information">
+                                <group>
+                                    <field name = "phone"/>
+                                    
+                                </group>
+                                <group>
+                                    <field name = "email"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+                
+            </form>
+        </field>
+    </record>
+
+   
+    <!--    customer Menu Action-->
+    <record id="hotel_customer_action" model="ir.actions.act_window">
+        <field name="name">customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.customer</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
+    </record>
+
+    <!--customers Menu-->
+    <menuitem id="hotel_customer_menu"
+              name="Customers"
+              action="hotel_customer_action"
+              parent="hotel_management_menu_root"
+              sequence="30"/>
+</odoo>

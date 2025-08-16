@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+     <!--Hotel Rooms Tree View-->
+    <record id="hotel_room_view_tree" model="ir.ui.view">
+        <field name="name">hotel.room.view.tree</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="floor_name1"/>
+                <field name="access" widget="many2many_tags"/>
+                <field name="num_person"/>
+                <field name="free_amount"/>
+                <!-- <field name = "description"/> -->
+            </tree>
+        </field>
+    </record>
+    <!--Hotel Rooms Form View-->
+    <record id="hotel_room_view_form" model="ir.ui.view">
+        <field name="name">hotel.room.view.form</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <form string="Floor">
+                <header>
+                    <field name="status" widget="statusbar" 
+                        options="{
+                                    'clickable': '1', 
+                                    'fold_field': 'fold'
+                                }"
+                        />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="floor_name1"/> 
+                            <field name="free_amount"/> 
+                            <!-- many2One -->
+                            <!--this is many2one field-->
+                            
+                        </group>
+                        <group>
+                             <field name="access" widget="many2many_tags"/>
+                             <field name="num_person"/>
+                        </group>
+                        
+                      
+                      
+                    </group>
+                    <group>
+                        <field name = "description"/>
+                    </group>
+                </sheet>
+                
+            </form>
+        </field>
+    </record>
+
+   
+    <!--    Roomsr Menu Action-->
+    <record id="hotel_room_action" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--Rooms Menu-->
+    <menuitem id="hotel_room_menu"
+              name="Rooms"
+              action="hotel_room_action"
+              parent="hotel_config_menu"
+              sequence="50"/>
+</odoo>

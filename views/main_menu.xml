@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    Main Menu-->
+    <menuitem id="hotel_management_menu_root"
+            web_icon="hotel_management_system,static/description/icon.png"
+              name="Hotel Management"
+              
+              sequence="10"/>
+
+
+
+    <menuitem id="hotel_report_menu"
+              name="Reporting"
+              sequence="48"
+              parent="hotel_management_menu_root"
+              action="hotel_report_action"/>
+
+  
+    <!--    Configuration menu-->
+    <menuitem id="hotel_config_menu"
+              name="Configuration"
+              sequence="50"
+              parent="hotel_management_menu_root"
+              />
+   
+</odoo>
